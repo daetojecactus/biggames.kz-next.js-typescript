@@ -1,13 +1,13 @@
-import React from "react";
-import LogoTop from "../Components/LogoTop";
-import { useLanguage } from "../hooks/LanguageContext";
-import LanguageSwitcher from "../Components/LanguageSwitcher";
-import PromoContent from "../Components/PromoContent";
-import { MyRoutes } from "../utils/consts";
-import { useAuth } from "../hooks/AuthContext";
-import promoData from "../Data/PromoData";
-import mainData from "../Data/MainPageData";
-import { useRouter } from "next/router";
+import React from 'react';
+import LogoTop from '../Components/LogoTop';
+import { useLanguage } from '../hooks/LanguageContext';
+import LanguageSwitcher from '../Components/LanguageSwitcher';
+import PromoContent from '../Components/PromoContent';
+import { MyRoutes } from '../utils/consts';
+import { useAuth } from '../hooks/AuthContext';
+import promoData from '../Data/PromoData';
+import mainData from '../Data/MainPageData';
+import { useRouter } from 'next/router';
 
 export default function ActionPage() {
   const { selectedLanguage, changeLanguage } = useLanguage(); //Язык
@@ -23,7 +23,7 @@ export default function ActionPage() {
   };
 
   //Слово каторое заключаем в тег strong
-  const targetWord: string = "миллион";
+  const targetWord: string = 'миллион';
 
   return (
     <section className="action" id="action">
@@ -49,7 +49,7 @@ export default function ActionPage() {
                   {part}
                   <strong>{targetWord}</strong>
                 </React.Fragment>
-              )
+              ),
             )}
         </p>
         <div className="action__box">

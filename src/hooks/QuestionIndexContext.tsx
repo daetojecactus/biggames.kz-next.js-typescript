@@ -4,7 +4,7 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-} from "react";
+} from 'react';
 
 // Интерфейс для контекста QuestionIndexContext
 interface QuestionIndexContextProps {
@@ -34,13 +34,13 @@ export default function QuestionIndexProvider({
   // Проверка наличия контекста, чтобы избежать ошибок во время выполнения
   if (!context) {
     console.warn(
-      "QuestionIndexProvider must be used within a QuestionIndexContext"
+      'QuestionIndexProvider must be used within a QuestionIndexContext',
     );
   }
 
   const [currentQuestionId, setCurrentQuestionId] = useState(() => {
-    if (typeof window !== "undefined") {
-      const storedQuestionId = localStorage.getItem("currentQuestionId");
+    if (typeof window !== 'undefined') {
+      const storedQuestionId = localStorage.getItem('currentQuestionId');
       return storedQuestionId ? parseInt(storedQuestionId) : 1;
     } else {
       // Обработка случая, когда localStorage недоступен
@@ -52,7 +52,7 @@ export default function QuestionIndexProvider({
 
   // При загрузке приложения, попытаемся восстановить массив из localStorage
   useEffect(() => {
-    const savedOptionsString = localStorage.getItem("selectedOptions");
+    const savedOptionsString = localStorage.getItem('selectedOptions');
     if (savedOptionsString !== null) {
       const savedOptions = JSON.parse(savedOptionsString);
       setSelectedOptions(savedOptions);
@@ -61,12 +61,12 @@ export default function QuestionIndexProvider({
 
   // При изменении массива, будем сохранять его в localStorage
   useEffect(() => {
-    localStorage.setItem("selectedOptions", JSON.stringify(selectedOptions));
+    localStorage.setItem('selectedOptions', JSON.stringify(selectedOptions));
   }, [selectedOptions]);
 
   const updateCurrentQuestionId = (newQuestionId: number) => {
     setCurrentQuestionId(newQuestionId);
-    localStorage.setItem("currentQuestionId", newQuestionId.toString());
+    localStorage.setItem('currentQuestionId', newQuestionId.toString());
   };
 
   const addSelectedOption = (optionId: number) => {
@@ -101,7 +101,7 @@ export function useQuestionIndex(): QuestionIndexContextProps {
   // Проверка наличия контекста, чтобы избежать ошибок во время выполнения
   if (!context) {
     throw new Error(
-      "useQuestionIndex must be used within a QuestionIndexProvider"
+      'useQuestionIndex must be used within a QuestionIndexProvider',
     );
   }
 

@@ -1,14 +1,14 @@
-import React, { useState, useEffect } from "react";
-import LogoTop from "../Components/LogoTop";
-import { useTotalCost } from "../hooks/TotalCostContext";
-import { useLanguage } from "../hooks/LanguageContext";
-import instagramData from "../Data/InstagramData";
-import { MyRoutes } from "../utils/consts";
-import PromoModal from "../Components/PromoModal";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useAuth } from "../hooks/AuthContext";
-import Loader from "../Components/Loader";
+import React, { useState, useEffect } from 'react';
+import LogoTop from '../Components/LogoTop';
+import { useTotalCost } from '../hooks/TotalCostContext';
+import { useLanguage } from '../hooks/LanguageContext';
+import instagramData from '../Data/InstagramData';
+import { MyRoutes } from '../utils/consts';
+import PromoModal from '../Components/PromoModal';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useAuth } from '../hooks/AuthContext';
+import Loader from '../Components/Loader';
 
 export default function InstagramPage() {
   const { totalCost, resetTotalCost } = useTotalCost(); //Итоговая стоимость
@@ -74,7 +74,7 @@ export default function InstagramPage() {
                 <div className="game__progress final-story__progress">
                   <div className="game__progress-line final-story__progress-line">
                     <span className="game__progress-coast final-story__progress-coast">
-                      {totalCost.toLocaleString("ru-RU")} тг
+                      {totalCost.toLocaleString('ru-RU')} тг
                     </span>
                   </div>
                 </div>
@@ -84,7 +84,7 @@ export default function InstagramPage() {
                   {instagramData[0].title[selectedLanguage]}
                 </h2>
                 <p className="final-story__subtitle">
-                  {" "}
+                  {' '}
                   {totalCost <= 2500000 && (
                     <>{instagramData[0].subTitleBad[selectedLanguage]}</>
                   )}

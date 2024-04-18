@@ -4,9 +4,9 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-} from "react";
-import { MyRoutes } from "../utils/consts";
-import { useRouter } from "next/router";
+} from 'react';
+import { MyRoutes } from '../utils/consts';
+import { useRouter } from 'next/router';
 
 // Интерфейс для контекста TotalCostContext
 interface TotalCostContextProps {
@@ -27,7 +27,7 @@ export const useTotalCost = (): TotalCostContextProps => {
   const context = useContext(TotalCostContext);
 
   if (!context) {
-    throw new Error("useTotalCost must be used within a TotalCostProvider");
+    throw new Error('useTotalCost must be used within a TotalCostProvider');
   }
 
   return context;
@@ -46,7 +46,7 @@ export default function TotalCostProvider({
 
   // Проверка наличия контекста, чтобы избежать ошибок во время выполнения
   if (!context) {
-    console.warn("TotalCostProvider must be used within a TotalCostContext");
+    console.warn('TotalCostProvider must be used within a TotalCostContext');
   }
 
   // const [totalCost, setTotalCost] = useState(() => {
@@ -61,10 +61,10 @@ export default function TotalCostProvider({
   // с помощью проверки typeof window !== 'undefined'
   const [totalCost, setTotalCost] = useState(() => {
     // Проверяем, доступен ли localStorage на клиентской стороне
-    if (typeof window !== "undefined") {
+    if (typeof window !== 'undefined') {
       // Используем localStorage для получения суммы, если она там сохранена
       // const storedTotalCost = localStorage.getItem("totalCost");
-      const storedTotalCost = sessionStorage.getItem("totalCost");
+      const storedTotalCost = sessionStorage.getItem('totalCost');
       return storedTotalCost ? parseInt(storedTotalCost) : 0;
     } else {
       // Возвращаем значение по умолчанию, если localStorage недоступен
@@ -80,7 +80,7 @@ export default function TotalCostProvider({
   useEffect(() => {
     // Сохраняем сумму в localStorage при каждом изменении
     // localStorage.setItem("totalCost", totalCost.toString());
-    sessionStorage.setItem("totalCost", totalCost.toString());
+    sessionStorage.setItem('totalCost', totalCost.toString());
   }, [totalCost]);
 
   const updateTotalCost = (newTotalCost: number) => {

@@ -1,10 +1,10 @@
-import React from "react";
-import { MyRoutes } from "../utils/consts";
-import mainData from "../Data/MainPageData";
-import { useLanguage } from "../hooks/LanguageContext";
-import LanguageSwitcher from "../Components/LanguageSwitcher";
-import LogoTop from "../Components/LogoTop";
-import { useRouter } from "next/router";
+import React from 'react';
+import { MyRoutes } from '../utils/consts';
+import mainData from '../Data/MainPageData';
+import { useLanguage } from '../hooks/LanguageContext';
+import LanguageSwitcher from '../Components/LanguageSwitcher';
+import LogoTop from '../Components/LogoTop';
+import { useRouter } from 'next/router';
 
 export default function MainPage() {
   const router = useRouter(); // Получаем объект router

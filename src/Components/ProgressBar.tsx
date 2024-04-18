@@ -1,10 +1,10 @@
-import React, { useEffect, useContext, useState } from "react";
-import { useQuestionIndex } from "../hooks/QuestionIndexContext";
-import { TotalCostContext } from "../hooks/TotalCostContext";
-import questions from "../Data/NewQuestions";
+import React, { useEffect, useContext, useState } from 'react';
+import { useQuestionIndex } from '../hooks/QuestionIndexContext';
+import { TotalCostContext } from '../hooks/TotalCostContext';
+import questions from '../Data/NewQuestions';
 // import { useLocation } from "react-router-dom";
-import { MyRoutes } from "../utils/consts";
-import { useRouter } from "next/router";
+import { MyRoutes } from '../utils/consts';
+import { useRouter } from 'next/router';
 
 //Интерфейс для прогресбара
 interface ProgressBarProps {
@@ -31,12 +31,12 @@ export default function ProgressBar({
     } else {
       //считаем
       const newPercentage = Math.round(
-        (currentQuestionId / questions.length) * 100
+        (currentQuestionId / questions.length) * 100,
       );
       setPercentage(newPercentage);
 
       // Сохраняем сумму и процент заполнения в localStorage
-      localStorage.setItem("progressPercentage", newPercentage.toString());
+      localStorage.setItem('progressPercentage', newPercentage.toString());
     }
   }, [currentQuestionId, router.pathname]);
 
@@ -44,18 +44,18 @@ export default function ProgressBar({
     if (router.pathname !== `${MyRoutes.QUESTION}/1`) {
       // проверяем еще раз и устанавливаем процент в 0, если на странице "question/1", так как игра начинается и всегда равно 0
       // Восстанавливаем процент заполнения из localStorage при загрузке
-      const storedPercentage = localStorage.getItem("progressPercentage");
+      const storedPercentage = localStorage.getItem('progressPercentage');
       if (storedPercentage !== null) {
         setPercentage(parseInt(storedPercentage));
       }
     }
   }, [currentQuestionId, router.pathname]);
 
-  const formattedTotalCost = totalCost.toLocaleString("ru-RU"); //переводим в читаемый формат
+  const formattedTotalCost = totalCost.toLocaleString('ru-RU'); //переводим в читаемый формат
 
   // Устанавливаем стиль для текста в зависимости от значения percentage
   const progressCoastStyle: React.CSSProperties = {
-    color: percentage === 100 ? "white" : "black",
+    color: percentage === 100 ? 'white' : 'black',
   };
 
   return (

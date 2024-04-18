@@ -4,7 +4,7 @@ import React, {
   useState,
   useEffect,
   ReactNode,
-} from "react";
+} from 'react';
 
 // Определяем тип контекста для авторизации
 interface AuthContextProps {
@@ -23,12 +23,11 @@ interface AuthProviderProps {
 
 //провайдер контекста для авторизации
 export default function AuthProvider({ children }: AuthProviderProps) {
-
   // Состояние для хранения статуса авторизации
   const [isAuthenticated, setIsAuthenticated] = useState(() => {
     //проверяем
-    if (typeof window !== "undefined") {
-      return localStorage.getItem("isAuthenticated") === "true" || false;
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('isAuthenticated') === 'true' || false;
     } else {
       return false;
     }
@@ -38,19 +37,19 @@ export default function AuthProvider({ children }: AuthProviderProps) {
   const authenticate = () => {
     setIsAuthenticated(true);
     // Сохранение статуса в sessionStorage
-    sessionStorage.setItem("isAuthenticated", "true");
+    sessionStorage.setItem('isAuthenticated', 'true');
   };
 
   // Функция для выхода из авторизации
   const logout = () => {
     setIsAuthenticated(false);
     // Сохранение статуса в sessionStorage
-    sessionStorage.setItem("isAuthenticated", "false");
+    sessionStorage.setItem('isAuthenticated', 'false');
   };
 
   // Проверка времени сессии при загрузке
   useEffect(() => {
-    const sessionTimeout = localStorage.getItem("sessionTimeout");
+    const sessionTimeout = localStorage.getItem('sessionTimeout');
     if (sessionTimeout) {
       const currentTime = new Date().getTime();
       if (currentTime > parseInt(sessionTimeout)) {
@@ -80,7 +79,7 @@ export function useAuth(): AuthContextProps {
 
   // Проверка наличия контекста, чтобы избежать ошибок во время выполнения
   if (!context) {
-    throw new Error("useAuth must be used within an AuthProvider");
+    throw new Error('useAuth must be used within an AuthProvider');
   }
 
   return context;

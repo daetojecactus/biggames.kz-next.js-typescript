@@ -1,8 +1,8 @@
-import React from "react";
-import { MyRoutes } from "../utils/consts";
-import { useLanguage } from "../hooks/LanguageContext";
-import NotFoundData from "../Data/NotFoundData";
-import { useRouter } from "next/router";
+import React from 'react';
+import { MyRoutes } from '../utils/consts';
+import { useLanguage } from '../hooks/LanguageContext';
+import NotFoundData from '../Data/NotFoundData';
+import { useRouter } from 'next/router';
 
 export default function NotFoundPage() {
   const { selectedLanguage } = useLanguage(); //Язык

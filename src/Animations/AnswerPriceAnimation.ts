@@ -1,5 +1,5 @@
 //Анимация появления цены
-import { Variants } from "framer-motion";
+import { Variants } from 'framer-motion';
 
 //интерфейс для AnswerPriceAnimation
 interface AnswerPriceAnimation extends Variants {

@@ -1,8 +1,8 @@
-import React from "react";
-import { useLanguage } from "../hooks/LanguageContext";
-import formData from "../Data/FormData";
-import { useRouter } from "next/router";
-import { MyRoutes } from "../utils/consts";
+import React from 'react';
+import { useLanguage } from '../hooks/LanguageContext';
+import formData from '../Data/FormData';
+import { useRouter } from 'next/router';
+import { MyRoutes } from '../utils/consts';
 
 //интерфейс для модалки
 interface FormSuccessModalProps {

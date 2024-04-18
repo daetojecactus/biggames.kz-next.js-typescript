@@ -1,4 +1,4 @@
-import React, { createContext, useContext, useState, ReactNode } from "react";
+import React, { createContext, useContext, useState, ReactNode } from 'react';
 
 // Определяем тип контекста
 interface LanguageContextProps {
@@ -8,7 +8,7 @@ interface LanguageContextProps {
 
 // Создаем контекст с явным указанием типа
 export const LanguageContext = createContext<LanguageContextProps | undefined>(
-  undefined
+  undefined,
 );
 
 // Определяем тип для провайдера контекста
@@ -19,7 +19,7 @@ interface LanguageProviderProps {
 // Создаем провайдер контекста
 export default function LanguageProvider({ children }: LanguageProviderProps) {
   // Состояние для хранения выбранного языка, по умолчанию казахский
-  const [selectedLanguage, setSelectedLanguage] = useState("kz");
+  const [selectedLanguage, setSelectedLanguage] = useState('kz');
 
   // Функция для изменения выбранного языка
   const changeLanguage = (language: string) => {
@@ -46,7 +46,7 @@ export function useLanguage(): LanguageContextProps {
 
   // Проверка наличия контекста, чтобы избежать ошибок во время выполнения
   if (!context) {
-    throw new Error("useLanguage must be used within a LanguageProvider");
+    throw new Error('useLanguage must be used within a LanguageProvider');
   }
 
   return context;

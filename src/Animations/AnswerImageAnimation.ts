@@ -1,5 +1,5 @@
 //Анимация для появления картинок
-import { Variants } from "framer-motion";
+import { Variants } from 'framer-motion';
 
 //Интерфейс для AnswerImageAnimation
 interface AnswerImageAnimation extends Variants {

@@ -4,21 +4,21 @@ import React, {
   ChangeEvent,
   FormEvent,
   useEffect,
-} from "react";
-import InputMask from "react-input-mask";
-import { MyRoutes } from "../utils/consts";
-import FormData from "../Data/FormData";
-import { useLanguage } from "../hooks/LanguageContext";
-import LanguageSwitcher from "../Components/LanguageSwitcher";
-import axios from "axios";
-import LogoTop from "../Components/LogoTop";
-import Loader from "../Components/Loader";
-import FormSuccessModal from "../Components/FormSuccessModal";
-import CityData from "../Data/CityData";
-import Select from "react-select";
-import Link from "next/link";
-import { useRouter } from "next/router";
-import { useAuth } from "../hooks/AuthContext";
+} from 'react';
+import InputMask from 'react-input-mask';
+import { MyRoutes } from '../utils/consts';
+import FormData from '../Data/FormData';
+import { useLanguage } from '../hooks/LanguageContext';
+import LanguageSwitcher from '../Components/LanguageSwitcher';
+import axios from 'axios';
+import LogoTop from '../Components/LogoTop';
+import Loader from '../Components/Loader';
+import FormSuccessModal from '../Components/FormSuccessModal';
+import CityData from '../Data/CityData';
+import Select from 'react-select';
+import Link from 'next/link';
+import { useRouter } from 'next/router';
+import { useAuth } from '../hooks/AuthContext';
 
 // Интерфейсы для типизации состояния формы
 interface FormDataState {
@@ -45,21 +45,21 @@ export default function LoginPage() {
     useState<boolean>(false); //используем для placeholder
   const [isPhonePlaceholderVisible, setIsPhonePlaceholderVisible] =
     useState<boolean>(false); //используем для placeholder
-  const crmAPI: string = process.env.BI_CRM_API_URL || ""; //получаем наш ключ для CRM
+  const crmAPI: string = process.env.BI_CRM_API_URL || ''; //получаем наш ключ для CRM
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
   const [formData, setFormData] = useState<FormDataState>({
-    clientName: "",
-    clientPhoneNumber: "",
-    regionId: "",
+    clientName: '',
+    clientPhoneNumber: '',
+    regionId: '',
   });
 
   const [errors, setErrors] = useState<ErrorsState>({});
 
   // Обработчик изменения значений в полях формы
   const handleInputChange = (
-    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>,
   ) => {
     const { name, value } = e.target;
     setFormData({
@@ -117,16 +117,16 @@ export default function LoginPage() {
       setTimeout(() => {
         // Здесь можете выполнять отправку данных
 
-        console.log("Имя:", formData.clientName);
-        console.log("Номер телефона:", formData.clientPhoneNumber);
+        console.log('Имя:', formData.clientName);
+        console.log('Номер телефона:', formData.clientPhoneNumber);
 
         const selectedCity = CityData.find(
-          (option) => option.value === parseInt(formData.regionId)
+          (option) => option.value === parseInt(formData.regionId),
         );
         if (selectedCity) {
-          console.log("Выбранный город:", selectedCity.label);
+          console.log('Выбранный город:', selectedCity.label);
         } else {
-          console.log("Город не выбран.");
+          console.log('Город не выбран.');
         }
 
         setLoading(false);
@@ -273,7 +273,7 @@ export default function LoginPage() {
                     name="clientName"
                     type="text"
                     className={`form__input ${
-                      errors.clientName ? "error" : ""
+                      errors.clientName ? 'error' : ''
                     }`}
                     value={formData.clientName}
                     onChange={handleInputChange}
@@ -281,7 +281,7 @@ export default function LoginPage() {
                   />
                   <span
                     className={`form__placeholder ${
-                      isNamePlaceholderVisible ? "visible" : ""
+                      isNamePlaceholderVisible ? 'visible' : ''
                     }`}
                   >
                     {FormData[0].namePlaceholder[selectedLanguage]}
@@ -298,7 +298,7 @@ export default function LoginPage() {
                     type="tel"
                     name="clientPhoneNumber"
                     className={`form__input ${
-                      errors.clientPhoneNumber ? "error" : ""
+                      errors.clientPhoneNumber ? 'error' : ''
                     }`}
                     value={formData.clientPhoneNumber}
                     onChange={handleInputChange}
@@ -306,7 +306,7 @@ export default function LoginPage() {
                   />
                   <span
                     className={`form__placeholder ${
-                      isPhonePlaceholderVisible ? "visible" : ""
+                      isPhonePlaceholderVisible ? 'visible' : ''
                     }`}
                   >
                     {FormData[0].phonePlaceholder[selectedLanguage]}
@@ -321,22 +321,22 @@ export default function LoginPage() {
 
                 <label className="form__label">
                   <Select
-                    className={`form__select ${isSelectActive ? "active" : ""}`}
+                    className={`form__select ${isSelectActive ? 'active' : ''}`}
                     name="regionId"
                     isSearchable={isSearchable} // отключаем поиск
                     options={CityData}
                     onFocus={() => setIsSelectActive(true)} //Фокус для placeholder
                     placeholder=""
                     value={CityData.find(
-                      (option) => option.value === parseInt(formData.regionId)
+                      (option) => option.value === parseInt(formData.regionId),
                     )}
                     onChange={(selectedOption) => {
-                      console.log("Selected Option:", selectedOption);
+                      console.log('Selected Option:', selectedOption);
                       setFormData({
                         ...formData,
                         regionId: selectedOption
                           ? selectedOption.value.toString()
-                          : "",
+                          : '',
                       });
                     }}
                   />

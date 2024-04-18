@@ -1,5 +1,5 @@
 //Информация о кнопках
-import { TranslationKeys } from "./DataInterfaces";
+import { TranslationKeys } from './DataInterfaces';
 
 // интерфейс ButtonsAndQuestion
 interface ButtonsAndQuestion {
@@ -13,20 +13,20 @@ interface ButtonsAndQuestion {
 const buttonsAndQuestion: ButtonsAndQuestion[] = [
   {
     buttonPrev: {
-      ru: "Назад",
-      kz: "Артқа",
+      ru: 'Назад',
+      kz: 'Артқа',
     },
     buttonNext: {
-      ru: "Далее",
-      kz: "Әрі қарай",
+      ru: 'Далее',
+      kz: 'Әрі қарай',
     },
     buttonComplete: {
-      ru: "Завершить",
-      kz: "Аяқтау",
+      ru: 'Завершить',
+      kz: 'Аяқтау',
     },
     question: {
-      ru: "Вопрос",
-      kz: "Сұрақ",
+      ru: 'Вопрос',
+      kz: 'Сұрақ',
     },
   },
 ];

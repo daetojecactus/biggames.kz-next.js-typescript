@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 //Интерфейс для кнопки смены языка
 interface LanguageSwitcherProps {
@@ -12,7 +12,7 @@ export default function LanguageSwitcher({
 }: LanguageSwitcherProps) {
   // Функция для переключения языка
   const toggleLanguage = () => {
-    onChange(selectedLanguage === "kz" ? "ru" : "kz");
+    onChange(selectedLanguage === 'kz' ? 'ru' : 'kz');
   };
 
   return (
@@ -21,7 +21,7 @@ export default function LanguageSwitcher({
         className="language-switcher__btn btn-reset"
         onClick={toggleLanguage}
       >
-        {selectedLanguage === "kz" ? "KZ" : "RU"}
+        {selectedLanguage === 'kz' ? 'KZ' : 'RU'}
       </button>
     </div>
   );

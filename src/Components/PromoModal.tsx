@@ -1,7 +1,7 @@
-import React from "react";
-import PromoContent from "./PromoContent";
-import promoData from "../Data/PromoData";
-import { useLanguage } from "../hooks/LanguageContext";
+import React from 'react';
+import PromoContent from './PromoContent';
+import promoData from '../Data/PromoData';
+import { useLanguage } from '../hooks/LanguageContext';
 
 //интерфейс для промо-модалки
 interface PromoModalProps {

@@ -1,32 +1,32 @@
-import React, { useEffect } from "react";
-import ProgressBar from "../../Components/ProgressBar";
-import questions from "../../Data/NewQuestions";
-import { QuestionItem, QuestionOption } from "../../Data/NewQuestions";
-import { useTotalCost } from "../../hooks/TotalCostContext";
-import { useQuestionIndex } from "../../hooks/QuestionIndexContext";
-import { useLanguage } from "../../hooks/LanguageContext";
-import LanguageSwitcher from "../../Components/LanguageSwitcher";
-import buttonsAndQuestion from "../../Data/ButtonsAndQuestion";
-import { motion } from "framer-motion";
-import AnswerPriceAnimation from "../../Animations/AnswerPriceAnimation";
-import AnswerImageAnimation from "../../Animations/AnswerImageAnimation";
-import { MyRoutes } from "../../utils/consts";
-import LogoTop from "../../Components/LogoTop";
-import { useRouter } from "next/router";
-import { useAuth } from "../../hooks/AuthContext";
-import Loader from "../../Components/Loader";
+import React, { useEffect } from 'react';
+import ProgressBar from '../../Components/ProgressBar';
+import questions from '../../Data/NewQuestions';
+import { QuestionItem, QuestionOption } from '../../Data/NewQuestions';
+import { useTotalCost } from '../../hooks/TotalCostContext';
+import { useQuestionIndex } from '../../hooks/QuestionIndexContext';
+import { useLanguage } from '../../hooks/LanguageContext';
+import LanguageSwitcher from '../../Components/LanguageSwitcher';
+import buttonsAndQuestion from '../../Data/ButtonsAndQuestion';
+import { motion } from 'framer-motion';
+import AnswerPriceAnimation from '../../Animations/AnswerPriceAnimation';
+import AnswerImageAnimation from '../../Animations/AnswerImageAnimation';
+import { MyRoutes } from '../../utils/consts';
+import LogoTop from '../../Components/LogoTop';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/AuthContext';
+import Loader from '../../Components/Loader';
 
 export default function AnswerPage() {
   const router = useRouter(); // Получаем объект router
   const { isAuthenticated } = useAuth();
   const { id, selectedOptionId: selectedOptionIdString } = router.query;
   const selectedOptionId =
-    typeof selectedOptionIdString === "string"
+    typeof selectedOptionIdString === 'string'
       ? parseInt(selectedOptionIdString)
       : undefined;
 
   const currentQuestion: QuestionItem | undefined = questions.find(
-    (question) => question.id === Number(id)
+    (question) => question.id === Number(id),
   );
   const { selectedLanguage, changeLanguage } = useLanguage(); //Язык
   const { totalCost, updateTotalCost } = useTotalCost(); //Итоговая сумма
@@ -46,7 +46,7 @@ export default function AnswerPage() {
   // Функция для получения ID следующего вопроса
   function getNextQuestionId(currentQuestionId: number): number {
     const currentIndex = questions.findIndex(
-      (question) => question.id === currentQuestionId
+      (question) => question.id === currentQuestionId,
     );
 
     if (currentIndex === -1 || currentIndex === questions.length - 1) {
@@ -62,11 +62,11 @@ export default function AnswerPage() {
   const handleGoBack = () => {
     const questionId = Number(id);
     const currentQuestion = questions.find(
-      (question) => question.id === questionId
+      (question) => question.id === questionId,
     );
     if (currentQuestion) {
       const selectedOption = currentQuestion.options.find(
-        (option) => option.id === selectedOptionId
+        (option) => option.id === selectedOptionId,
       );
       const prevQuestionCost = selectedOption ? selectedOption.value : 0;
       updateCurrentQuestionId(currentQuestion.id);
@@ -149,7 +149,7 @@ export default function AnswerPage() {
                 whileInView="visible"
                 variants={AnswerPriceAnimation}
               >
-                + {selectedOption.value.toLocaleString("ru-RU")} тг
+                + {selectedOption.value.toLocaleString('ru-RU')} тг
               </motion.p>
             </>
           )}

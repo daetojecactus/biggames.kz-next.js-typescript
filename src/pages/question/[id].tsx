@@ -1,24 +1,24 @@
-import React, { useState, useEffect } from "react";
-import questions from "../../Data/NewQuestions";
-import { QuestionItem, QuestionOption } from "../../Data/NewQuestions";
-import { useQuestionIndex } from "../../hooks/QuestionIndexContext";
-import { useLanguage } from "../../hooks/LanguageContext";
-import LanguageSwitcher from "../../Components/LanguageSwitcher";
-import ProgressBar from "../../Components/ProgressBar";
-import { useTotalCost } from "../../hooks/TotalCostContext";
-import buttonsAndQuestion from "../../Data/ButtonsAndQuestion";
-import { MyRoutes } from "../../utils/consts";
-import LogoTop from "../../Components/LogoTop";
-import { useRouter } from "next/router";
-import { useAuth } from "../../hooks/AuthContext";
-import Loader from "../../Components/Loader";
+import React, { useState, useEffect } from 'react';
+import questions from '../../Data/NewQuestions';
+import { QuestionItem, QuestionOption } from '../../Data/NewQuestions';
+import { useQuestionIndex } from '../../hooks/QuestionIndexContext';
+import { useLanguage } from '../../hooks/LanguageContext';
+import LanguageSwitcher from '../../Components/LanguageSwitcher';
+import ProgressBar from '../../Components/ProgressBar';
+import { useTotalCost } from '../../hooks/TotalCostContext';
+import buttonsAndQuestion from '../../Data/ButtonsAndQuestion';
+import { MyRoutes } from '../../utils/consts';
+import LogoTop from '../../Components/LogoTop';
+import { useRouter } from 'next/router';
+import { useAuth } from '../../hooks/AuthContext';
+import Loader from '../../Components/Loader';
 
 export default function QuestionPage() {
   const router = useRouter();
   const { id } = router.query; // Получаем параметр id из URL
   const { isAuthenticated } = useAuth();
   const currentQuestion: QuestionItem | undefined = questions.find(
-    (question) => question.id === Number(id)
+    (question) => question.id === Number(id),
   );
   const [selectedOptionId, setSelectedOptionId] = useState<number | null>(null); //Выбранный вариант
   const [isOtherOptionsDisabled, setIsOtherOptionsDisabled] =
@@ -33,7 +33,7 @@ export default function QuestionPage() {
   // Функция для получения ID предыдущего вопроса
   function getPrevQuestionId(currentQuestionId: number): number {
     const currentIndex = questions.findIndex(
-      (question) => question.id === currentQuestionId
+      (question) => question.id === currentQuestionId,
     );
 
     if (currentIndex <= 0) {
@@ -49,7 +49,7 @@ export default function QuestionPage() {
   const handleNextQuestion = () => {
     if (selectedOptionId !== null && currentQuestion) {
       const selectedOption = currentQuestion.options.find(
-        (option) => option.id === selectedOptionId
+        (option) => option.id === selectedOptionId,
       );
 
       const currentQuestionCost = selectedOption ? selectedOption.value : 0;
@@ -71,13 +71,13 @@ export default function QuestionPage() {
   const handleGoBack = () => {
     const prevQuestionId = getPrevQuestionId(Number(id));
     const prevQuestion = questions.find(
-      (question) => question.id === Number(prevQuestionId)
+      (question) => question.id === Number(prevQuestionId),
     );
 
     if (prevQuestion) {
       const selectedOptionId = selectedOptions[selectedOptions.length - 1]; // Получаем последний выбранный вариант
       const selectedOption = prevQuestion.options.find(
-        (option) => option.id === selectedOptionId
+        (option) => option.id === selectedOptionId,
       );
       const prevQuestionCost = selectedOption ? selectedOption.value : 0;
 
@@ -104,7 +104,7 @@ export default function QuestionPage() {
   };
 
   //Прячем кнопку назад если мы на странице 1
-  const hideBackButton = id === "1";
+  const hideBackButton = id === '1';
 
   useEffect(() => {
     if (!isAuthenticated) {
@@ -137,7 +137,7 @@ export default function QuestionPage() {
             <h3 className="questions__question">
               {currentQuestion
                 ? currentQuestion.question[selectedLanguage]
-                : ""}
+                : ''}
             </h3>
 
             <ul className="questions__list list-reset">
@@ -145,11 +145,11 @@ export default function QuestionPage() {
                 <li
                   key={option.id}
                   className={`questions__item ${
-                    selectedOptionId === option.id ? "selected" : ""
+                    selectedOptionId === option.id ? 'selected' : ''
                   } ${
                     isOtherOptionsDisabled && selectedOptionId !== option.id
-                      ? "disabled"
-                      : ""
+                      ? 'disabled'
+                      : ''
                   }`}
                   onClick={() => handleCardClick(option.id)}
                 >
@@ -184,7 +184,7 @@ export default function QuestionPage() {
             <button
               onClick={handleNextQuestion}
               className={`questions__btn-next btn-reset ${
-                isNextButtonDisabled ? "disabled" : ""
+                isNextButtonDisabled ? 'disabled' : ''
               }`}
               disabled={isNextButtonDisabled}
             >
