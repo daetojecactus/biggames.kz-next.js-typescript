@@ -14,7 +14,7 @@
         "files": "*.tsx",
         "options": {
           "parser": "typescript",
-          "tsxBracketSameLine": false
+          "jsxBracketSameLine": false
         }
       }
     ]

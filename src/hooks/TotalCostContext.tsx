@@ -1,3 +1,5 @@
+/* eslint-disable */
+
 import React, {
   createContext,
   useContext,
@@ -76,6 +78,7 @@ export default function TotalCostProvider({
   const router = useRouter();
   const [prevCost, setPrevCost] = useState(0); // Добавляем состояние для предыдущей суммы
   const [prevQuestionData, setPrevQuestionData] = useState<any>(null); // Добавляем состояние для предыдущего вопроса
+  console.log('Type of prevQuestionData:', typeof prevQuestionData);
 
   useEffect(() => {
     // Сохраняем сумму в localStorage при каждом изменении

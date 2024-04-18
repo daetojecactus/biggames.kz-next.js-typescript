@@ -1,3 +1,4 @@
+import React from 'react';
 import type { AppProps } from 'next/app';
 import '../styles/normalize.css';
 import '../styles/globals.scss';

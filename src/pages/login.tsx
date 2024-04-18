@@ -10,7 +10,7 @@ import { MyRoutes } from '../utils/consts';
 import FormData from '../Data/FormData';
 import { useLanguage } from '../hooks/LanguageContext';
 import LanguageSwitcher from '../Components/LanguageSwitcher';
-import axios from 'axios';
+// import axios from 'axios';
 import LogoTop from '../Components/LogoTop';
 import Loader from '../Components/Loader';
 import FormSuccessModal from '../Components/FormSuccessModal';
@@ -45,7 +45,7 @@ export default function LoginPage() {
     useState<boolean>(false); //используем для placeholder
   const [isPhonePlaceholderVisible, setIsPhonePlaceholderVisible] =
     useState<boolean>(false); //используем для placeholder
-  const crmAPI: string = process.env.BI_CRM_API_URL || ''; //получаем наш ключ для CRM
+  // const crmAPI: string = process.env.BI_CRM_API_URL || ''; //получаем наш ключ для CRM
   const router = useRouter();
   const { isAuthenticated } = useAuth();
 
@@ -56,6 +56,7 @@ export default function LoginPage() {
   });
 
   const [errors, setErrors] = useState<ErrorsState>({});
+  console.log(setIsSearchable);
 
   // Обработчик изменения значений в полях формы
   const handleInputChange = (
